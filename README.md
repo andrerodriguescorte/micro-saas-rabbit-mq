@@ -33,7 +33,7 @@ dotnet add package FidelizarMais.Shared.Microservice.RabbitMQ
 ### 2. Registre os serviços
 
 ```csharp
-services.AddRabbit("amqp://usuario:senha@host:5672");
+services.AddRabbit(configuration["RabbitMQ:Uri"]);
 services.AddSingleton<IRabbitConsumerHandler<MinhaMensagem>, MinhaMensagemHandler>();
 services.AddRabbitConsumer<MinhaMensagem, MinhaMensagemHandler>("nome-da-fila");
 ```
