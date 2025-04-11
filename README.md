@@ -13,7 +13,7 @@ Projeto base para utilização de um pacote NuGet que implementa integração pe
 ## 📁 Estrutura do Projeto
 
 ```
-FidelizarMais.RabbitMQ.NugetExample.Full/
+DotNet.MicroSaaS.RabbitMQ/
 ├── Program.cs
 ├── TestMessage.cs
 ├── TestMessageHandler.cs
@@ -22,7 +22,7 @@ FidelizarMais.RabbitMQ.NugetExample.Full/
 ├── RabbitConsumer.cs
 ├── RabbitPullConsumer.cs
 ├── IRabbitConsumerHandler.cs
-└── FidelizarMais.RabbitMQ.NugetExample.Full.csproj
+└── DotNet.MicroSaaS.RabbitMQ.csproj
 ```
 
 ---
