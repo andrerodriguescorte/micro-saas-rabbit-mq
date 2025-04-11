@@ -1,53 +1,71 @@
-# NuGet RabbitMQ Fidelizar+
+# DotNet.MicroSaaS.RabbitMQ
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](#)
 [![.NET](https://img.shields.io/badge/.NET-8.0-blue)](#)
 
-Projeto base para utilização de um pacote NuGet que implementa integração performática e escalável com **RabbitMQ**, ideal para aplicações que precisam publicar, consumir continuamente ou consumir sob demanda de filas.
-
-> ⚠️ Este projeto é um exemplo funcional voltado para **uso real em MicroSaaS**, com foco em economia de recursos e alta performance.
+Projeto base para utilização de um pacote NuGet que implementa integração performática, resiliente e observável com **RabbitMQ**, ideal para MicroSaaS ou sistemas de mensageria intensiva.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura de Pastas
 
 ```
-FidelizarMais.RabbitMQ.NugetExample.Full/
+DotNet.MicroSaaS.RabbitMQ/
+├── Configuration/
+├── Core/
+│   └── Interfaces/
+├── Infrastructure/
+├── Handlers/
+├── Models/
 ├── Program.cs
-├── TestMessage.cs
-├── TestMessageHandler.cs
-├── RabbitConnectionManager.cs
-├── RabbitPublisher.cs
-├── RabbitConsumer.cs
-├── RabbitPullConsumer.cs
-├── IRabbitConsumerHandler.cs
-└── FidelizarMais.RabbitMQ.NugetExample.Full.csproj
+└── DotNet.MicroSaaS.RabbitMQ.csproj
 ```
-
----
-
-## 🔄 Branches Padrão
-
-- `dev` – Desenvolvimento contínuo
-- `sandbox` – Homologação / pré-produção
-- `master` – Produção
-
-> O fluxo de trabalho segue: `dev` → `sandbox` → `master`
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
-- .NET Core 8
-- RabbitMQ (via RabbitMQ.Client)
-- Publicação e consumo via AMQP
-- Estrutura modular e reutilizável
-- Injeção de dependência com `AddRabbit(...)`
+- .NET 8
+- RabbitMQ.Client
+- Microsoft.Extensions.DependencyInjection
+- System.Text.Json
+- Serilog (observabilidade)
+- Polly (resiliência)
 
 ---
 
-## 🧪 Executando o Projeto
+## 💡 Recursos Adicionais
+
+### 🔁 Resiliência com Polly
+
+- Retry
+- Timeout
+- Circuit Breaker
+
+### 👁 Observabilidade com Serilog
+
+- Console Logging
+- File Logging
+- Estrutura pronta para uso com Application Insights ou Seq
+
+---
+
+## 📦 Instalação dos pacotes
+
+```bash
+dotnet add package RabbitMQ.Client
+dotnet add package Microsoft.Extensions.DependencyInjection
+dotnet add package System.Text.Json
+dotnet add package Microsoft.Extensions.Logging.Abstractions
+dotnet add package Serilog
+dotnet add package Serilog.Sinks.Console
+dotnet add package Polly
+```
+
+---
+
+## ▶️ Como executar
 
 ```bash
 dotnet restore
@@ -62,22 +80,18 @@ dotnet run
 await publisher.PublishAsync("", "fila-teste", new TestMessage { Texto = "Olá via NuGet!" });
 ```
 
----
-
 ## 📥 Exemplo de Consumo Sob Demanda
 
 ```csharp
 var mensagem = pullConsumer.ObterMensagem<TestMessage>("fila-teste");
 ```
 
----
-
 ## 🔄 Exemplo de Consumo Contínuo
 
-O handler `TestMessageHandler` é registrado via DI e escutará a fila automaticamente.
+O handler `TestMessageHandler` será executado automaticamente via DI.
 
 ---
 
-## 📚 Finalidade
+## ✅ Finalidade
 
-Este projeto exemplifica como construir um **conector leve e robusto** com RabbitMQ sem consumir recursos desnecessários. Ideal para micro serviços, MicroSaaS e plataformas de eventos.
+Este projeto exemplifica como construir um **conector leve, robusto e escalável** com RabbitMQ, preparado para sistemas modernos orientados a eventos.
