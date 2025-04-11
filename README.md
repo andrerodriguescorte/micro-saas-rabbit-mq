@@ -1,97 +1,103 @@
-# DotNet.MicroSaaS.RabbitMQ
+# NuGet RabbitMQ Performático com .NET 8
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](#)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](#)
-[![.NET](https://img.shields.io/badge/.NET-8.0-blue)](#)
+Você já precisou usar RabbitMQ em múltiplos projetos e se viu repetindo a mesma lógica de conexão, canal e publicação?  
+Ou pior: enfrentou problemas de consumo de memória e canais abertos demais em produção?
 
-Projeto base para utilização de um pacote NuGet que implementa integração performática, resiliente e observável com **RabbitMQ**, ideal para MicroSaaS ou sistemas de mensageria intensiva.
+Este pacote NuGet resolve isso:
 
----
+🔗 [github.com/andrerodriguescorte/micro-saas-rabbit-mq](https://github.com/andrerodriguescorte/micro-saas-rabbit-mq)
 
-## 📁 Estrutura de Pastas
-
-```
-DotNet.MicroSaaS.RabbitMQ/
-├── Configuration/
-├── Core/
-│   └── Interfaces/
-├── Infrastructure/
-├── Handlers/
-├── Models/
-├── Program.cs
-└── DotNet.MicroSaaS.RabbitMQ.csproj
-```
+> Um template para criação de **bibliotecas NuGet robustas e reutilizáveis com RabbitMQ**, 100% baseada em boas práticas de performance e resiliência.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Funcionalidades
 
-- .NET 8
-- RabbitMQ.Client
-- Microsoft.Extensions.DependencyInjection
-- System.Text.Json
-- Serilog (observabilidade)
-- Polly (resiliência)
-
----
-
-## 💡 Recursos Adicionais
-
-### 🔁 Resiliência com Polly
-
-- Retry
-- Timeout
-- Circuit Breaker
-
-### 👁 Observabilidade com Serilog
-
-- Console Logging
-- File Logging
-- Estrutura pronta para uso com Application Insights ou Seq
+- ✅ Conexão e canal reaproveitados (singleton)
+- ✅ Publicação performática com fallback automático
+- ✅ Consumo contínuo via handler injetável (`IRabbitConsumerHandler<T>`)
+- ✅ Pull sob demanda com `RabbitPullConsumer`
+- ✅ Logging estruturado com Serilog + ILogger<T>
+- ✅ Compatível com qualquer aplicação .NET 8 (API, Console, Worker)
 
 ---
 
-## 📦 Instalação dos pacotes
+## 📦 Como usar
+
+### 1. Instale o pacote NuGet
 
 ```bash
-dotnet add package RabbitMQ.Client
-dotnet add package Microsoft.Extensions.DependencyInjection
-dotnet add package System.Text.Json
-dotnet add package Microsoft.Extensions.Logging.Abstractions
-dotnet add package Serilog
-dotnet add package Serilog.Sinks.Console
-dotnet add package Polly
+dotnet add package FidelizarMais.Shared.Microservice.RabbitMQ
 ```
 
----
-
-## ▶️ Como executar
-
-```bash
-dotnet restore
-dotnet run
-```
-
----
-
-## 📤 Exemplo de Publicação
+### 2. Registre os serviços
 
 ```csharp
-await publisher.PublishAsync("", "fila-teste", new TestMessage { Texto = "Olá via NuGet!" });
+services.AddRabbit("amqp://usuario:senha@host:5672");
+services.AddSingleton<IRabbitConsumerHandler<MinhaMensagem>, MinhaMensagemHandler>();
+services.AddRabbitConsumer<MinhaMensagem, MinhaMensagemHandler>("nome-da-fila");
 ```
 
-## 📥 Exemplo de Consumo Sob Demanda
+### 3. Publique uma mensagem
 
 ```csharp
-var mensagem = pullConsumer.ObterMensagem<TestMessage>("fila-teste");
+await publisher.PublishAsync("", "nome-da-fila", new MinhaMensagem());
 ```
 
-## 🔄 Exemplo de Consumo Contínuo
+### 4. Consuma com handler injetável
 
-O handler `TestMessageHandler` será executado automaticamente via DI.
+```csharp
+public class MinhaMensagemHandler : IRabbitConsumerHandler<MinhaMensagem>
+{
+    public Task HandleAsync(MinhaMensagem message)
+    {
+        Console.WriteLine("Recebido: " + message.Conteudo);
+        return Task.CompletedTask;
+    }
+}
+```
 
 ---
 
-## ✅ Finalidade
+## 🧩 Arquitetura
 
-Este projeto exemplifica como construir um **conector leve, robusto e escalável** com RabbitMQ, preparado para sistemas modernos orientados a eventos.
+- `RabbitConnectionManager` → Singleton da conexão física
+- `RabbitPublisher` → Envia mensagens garantindo existência da fila
+- `RabbitConsumer<T>` → Consome mensagens via DI e handler assíncrono
+- `RabbitPullConsumer` → Consumo sob demanda com `.ObterMensagem(...)`
+
+---
+
+## ✅ Vantagens
+
+- 💨 Alta performance
+- ♻️ Reutilizável como NuGet
+- 📊 Observável com logs Serilog
+- 🔌 Compatível com apps simples e distribuídos
+
+---
+
+## ⚠️ Limitações
+
+- Não lida automaticamente com DLX/requeue
+- Focado em exchanges padrão (`""`) e filas diretas
+
+---
+
+## 🧪 Exemplo
+
+- Publicação de 1000 mensagens em múltiplas filas (`fila-teste-1` até `fila-teste-100`)
+- Consumo com `RabbitPullConsumer` em sequência
+- Log em `logs/app.log`
+
+---
+
+## 🖼 Diagrama Explicativo
+
+![Diagrama](docs/diagram.png)
+
+---
+
+## 📎 Repositório
+
+[https://github.com/andrerodriguescorte/micro-saas-rabbit-mq](https://github.com/andrerodriguescorte/micro-saas-rabbit-mq)
