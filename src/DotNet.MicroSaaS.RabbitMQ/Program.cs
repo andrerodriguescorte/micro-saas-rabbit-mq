@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using System;
 using System.Threading.Tasks;
-
+ 
 namespace DotNet.MicroSaaS.RabbitMQ
 {
     class Program
