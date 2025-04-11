@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - API", "2 - API", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.MicroSaaS.Starter.API", "src\DotNet.MicroSaaS.Starter.API\DotNet.MicroSaaS.Starter.API.csproj", "{F574DA87-ADC9-4115-81ED-06EC4B69A6C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.MicroSaaS.Starter.Application", "src\DotNet.MicroSaaS.Starter.Application\DotNet.MicroSaaS.Starter.Application.csproj", "{B2B4E2EA-4677-4AB5-B23D-B92DDA20DE0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{9D8D88B6-FD06-408D-9F1E-D42FDB34B145}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Tests", "0 - Tests", "{80162CDB-4403-4525-AF39-981BA9015A85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.MicroSaaS.Starter.Application.Tests", "src\DotNet.MicroSaaS.Starter.Application.Tests\DotNet.MicroSaaS.Starter.Application.Tests.csproj", "{966F6354-80E3-4424-BE03-86C9D7073552}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{95E33E4B-1B0E-49B9-AC4E-197AD1E660DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.MicroSaaS.Starter.Domain", "src\DotNet.MicroSaaS.Starter.Domain\DotNet.MicroSaaS.Starter.Domain.csproj", "{13319E24-1DE8-4E74-AF33-A424754925C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{7C244F4C-5D25-498E-90C2-B17980CD80FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.MicroSaaS.Starter.Presentation", "src\DotNet.MicroSaaS.Starter.Presentation\DotNet.MicroSaaS.Starter.Presentation.csproj", "{4ECCBC02-D1E3-4EAB-AB94-9C544D7E2013}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infrastructure", "5 - Infrastructure", "{65C6D542-86CB-4987-855D-3959DE2C8A3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet.MicroSaaS.Starter.Infrastructure", "src\DotNet.MicroSaaS.Starter.Infrastructure\DotNet.MicroSaaS.Starter.Infrastructure.csproj", "{5247C6BE-3ABE-437A-BB3F-017FEB0AFAE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F574DA87-ADC9-4115-81ED-06EC4B69A6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F574DA87-ADC9-4115-81ED-06EC4B69A6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F574DA87-ADC9-4115-81ED-06EC4B69A6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F574DA87-ADC9-4115-81ED-06EC4B69A6C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2B4E2EA-4677-4AB5-B23D-B92DDA20DE0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2B4E2EA-4677-4AB5-B23D-B92DDA20DE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2B4E2EA-4677-4AB5-B23D-B92DDA20DE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2B4E2EA-4677-4AB5-B23D-B92DDA20DE0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{966F6354-80E3-4424-BE03-86C9D7073552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966F6354-80E3-4424-BE03-86C9D7073552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966F6354-80E3-4424-BE03-86C9D7073552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966F6354-80E3-4424-BE03-86C9D7073552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13319E24-1DE8-4E74-AF33-A424754925C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13319E24-1DE8-4E74-AF33-A424754925C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13319E24-1DE8-4E74-AF33-A424754925C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13319E24-1DE8-4E74-AF33-A424754925C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ECCBC02-D1E3-4EAB-AB94-9C544D7E2013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ECCBC02-D1E3-4EAB-AB94-9C544D7E2013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ECCBC02-D1E3-4EAB-AB94-9C544D7E2013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ECCBC02-D1E3-4EAB-AB94-9C544D7E2013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5247C6BE-3ABE-437A-BB3F-017FEB0AFAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5247C6BE-3ABE-437A-BB3F-017FEB0AFAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5247C6BE-3ABE-437A-BB3F-017FEB0AFAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5247C6BE-3ABE-437A-BB3F-017FEB0AFAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F574DA87-ADC9-4115-81ED-06EC4B69A6C5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{B2B4E2EA-4677-4AB5-B23D-B92DDA20DE0F} = {9D8D88B6-FD06-408D-9F1E-D42FDB34B145}
+		{966F6354-80E3-4424-BE03-86C9D7073552} = {80162CDB-4403-4525-AF39-981BA9015A85}
+		{13319E24-1DE8-4E74-AF33-A424754925C2} = {95E33E4B-1B0E-49B9-AC4E-197AD1E660DA}
+		{4ECCBC02-D1E3-4EAB-AB94-9C544D7E2013} = {7C244F4C-5D25-498E-90C2-B17980CD80FC}
+		{5247C6BE-3ABE-437A-BB3F-017FEB0AFAE0} = {65C6D542-86CB-4987-855D-3959DE2C8A3E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE366A2E-8AC3-4372-8248-873216F5195C}
+	EndGlobalSection
+EndGlobal
